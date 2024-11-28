@@ -68,7 +68,7 @@ export default function Screen() {
           </View>
         </CardHeader>
         <CardContent>
-          <View className='flex-row justify-around gap-3'>
+          <View className='flex-row justify-around gap-5'>
             <View className='items-center'>
               <Text className='text-sm text-muted-foreground'>Humidity</Text>
               <Text className='text-xl font-semibold'>{humidity}%</Text>
@@ -82,7 +82,7 @@ export default function Screen() {
               <Text className='text-xl font-semibold'>{lumen}</Text>
             </View>
           </View>
-          <View className='flex-row justify-around gap-3 mt-4'>
+          <View className='flex-row justify-around gap-5 mt-6'>
              <View className='flex-row items-center gap-2'>
                <Switch checked={lamp1state} onCheckedChange={() => {switchLamp(1)}} nativeID='airplane-mode' aria-label={'aaa'}/>
                <Label className='text-xl font-semibold'>Lamp 1</Label>
@@ -104,9 +104,22 @@ export default function Screen() {
         <CardFooter className='flex-col gap-3 pb-0 mt-2 mb-2'>
           <View className='flex-row justify-around gap-3'>
             <Button onPress={() => {
-              client.publish("iot/sensor", "Hello from RN");
+              console.log("turn on all lamp");
+              client.publish("iot/sensor/lamp", JSON.stringify({"action": "TURN_ON_ALL"}));
+              setLamp1State(true);
+              setLamp2State(true);
+              setLamp3State(true);
             }}>
-              <Text>Connect MQTT</Text>
+              <Text>Turn On All Lamp</Text>
+            </Button>
+            <Button onPress={() => {
+              console.log("turn off all lamp");
+              client.publish("iot/sensor/lamp", JSON.stringify({"action": "TURN_OFF_ALL"}));
+              setLamp1State(false);
+              setLamp2State(false);
+              setLamp3State(false);
+            }}>
+              <Text>Turn Off All Lamp</Text>
             </Button>
           </View>
         </CardFooter>
