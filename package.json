@@ -16,6 +16,7 @@
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/native": "^7.0.0",
     "@rn-primitives/avatar": "~1.1.0",
+    "@rn-primitives/dropdown-menu": "^1.1.0",
     "@rn-primitives/label": "^1.1.0",
     "@rn-primitives/portal": "~1.1.0",
     "@rn-primitives/progress": "~1.1.0",
@@ -37,6 +38,7 @@
     "lucide-react-native": "^0.378.0",
     "mqtt": "^5.10.2",
     "nativewind": "^4.1.23",
+    "paho-mqtt": "^1.1.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-native": "0.76.2",
@@ -54,6 +56,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
+    "@types/paho-mqtt": "^1.0.10",
     "@types/react": "~18.3.12",
     "typescript": "^5.3.3"
   },

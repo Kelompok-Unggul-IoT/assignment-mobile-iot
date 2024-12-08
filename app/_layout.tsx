@@ -41,18 +41,18 @@ export default function RootLayout() {
         document.documentElement.classList.add('bg-background');
       }
       if (!theme) {
-        AsyncStorage.setItem('theme', colorScheme);
+        await AsyncStorage.setItem('theme', colorScheme);
         setIsColorSchemeLoaded(true);
         return;
       }
       const colorTheme = theme === 'dark' ? 'light' : 'light';
       if (colorTheme !== colorScheme) {
         setColorScheme(colorTheme);
-        setAndroidNavigationBar(colorTheme);
+        await setAndroidNavigationBar(colorTheme);
         setIsColorSchemeLoaded(true);
         return;
       }
-      setAndroidNavigationBar(colorTheme);
+      await setAndroidNavigationBar(colorTheme);
       setIsColorSchemeLoaded(true);
     })().finally(() => {
       SplashScreen.hideAsync();
@@ -67,13 +67,7 @@ export default function RootLayout() {
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
       <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
       <Stack>
-        <Stack.Screen
-          name='index'
-          options={{
-            title: 'IoT Dashboard',
-            headerRight: () => <ThemeToggle />,
-          }}
-        />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
       <PortalHost />
     </ThemeProvider>
